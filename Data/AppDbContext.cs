@@ -9,8 +9,8 @@ namespace WebApplicationAPP.Data
         {
         }
 
-        public DbSet<Persona> Persona { get; set; }
         public DbSet<Cliente> Cliente { get; set; }
-        public DbSet<Producto> Producto { get; set; }
+        public DbSet<Servicio> Servicio { get; set; }
+        public DbSet<Reserva> Reserva { get; set; }
     }
 }

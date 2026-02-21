@@ -38,13 +38,21 @@ namespace WebApplicationAPP.Models
         [StringLength(100)]
         public string Sucursal { get; set; } = string.Empty;
 
-        public DateTime FechaDeRegistro { get; set; } = DateTime.Now;
+        public DateTime FechaDeRegistro { get; set; }
 
         public DateTime? FechaDeModificacion { get; set; }
 
         public bool Estado { get; set; } = true;
 
-        // Propiedad de navegación
+        [NotMapped]
+        public string AreaServicioTexto => AreaServicio switch
+        {
+            1 => "Servicios Financieros",
+            2 => "Servicios de Salud",
+            3 => "Servicios de Capacitación",
+            _ => "Desconocido"
+        };
+
         public virtual ICollection<Reserva>? Reservas { get; set; }
     }
 }

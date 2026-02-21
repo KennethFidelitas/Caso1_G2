@@ -36,8 +36,21 @@ namespace WebApplicationAPP.Business
 
         public void UpdateServicio(Servicio servicio)
         {
-            servicio.FechaDeModificacion = DateTime.Now;
-            _servicioRepository.UpdateServicio(servicio);
+            // Se trae el registro existente para no pisar FechaDeRegistro ni AreaServicio
+            var existente = _servicioRepository.GetServicioById(servicio.Id);
+            if (existente == null) return;
+
+            // Solo se actualizan los campos permitidos según el enunciado
+            existente.Nombre = servicio.Nombre;
+            existente.Descripcion = servicio.Descripcion;
+            existente.Monto = servicio.Monto;
+            existente.IVA = servicio.IVA;
+            existente.Encargado = servicio.Encargado;
+            existente.Sucursal = servicio.Sucursal;
+            existente.Estado = servicio.Estado;
+            existente.FechaDeModificacion = DateTime.Now; // Automático, no lo pide el usuario
+
+            _servicioRepository.UpdateServicio(existente);
         }
 
         public void DeleteServicio(int id)

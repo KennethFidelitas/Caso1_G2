@@ -1,0 +1,78 @@
+﻿@model WebApplicationAPP.Models.Servicio
+
+@{
+    ViewData["Title"] = "Registrar Servicio";
+}
+
+<h2>Registrar Servicio</h2>
+<hr />
+
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="mb-3">
+                <label asp-for="Nombre" class="form-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Descripcion" class="form-label"></label>
+                <textarea asp-for="Descripcion" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Monto" class="form-label"></label>
+                    <input asp-for="Monto" class="form-control" type="number" step="0.01" />
+                    <span asp-validation-for="Monto" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label asp-for="IVA" class="form-label">IVA (ej: 0.13 para 13%)</label>
+                    <input asp-for="IVA" class="form-control" type="number" step="0.01" min="0" max="1" />
+                    <span asp-validation-for="IVA" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="AreaServicio" class="form-label">Área de Servicio</label>
+                <select asp-for="AreaServicio" class="form-select">
+                    <option value="">-- Seleccione --</option>
+                    <option value="1">Servicios Financieros</option>
+                    <option value="2">Servicios de Salud</option>
+                    <option value="3">Servicios de Capacitación</option>
+                </select>
+                <span asp-validation-for="AreaServicio" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Encargado" class="form-label"></label>
+                <input asp-for="Encargado" class="form-control" />
+                <span asp-validation-for="Encargado" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Sucursal" class="form-label"></label>
+                <input asp-for="Sucursal" class="form-control" />
+                <span asp-validation-for="Sucursal" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3 form-check">
+                <input asp-for="Estado" class="form-check-input" />
+                <label asp-for="Estado" class="form-check-label">Activo</label>
+            </div>
+
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-primary">Registrar</button>
+                <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

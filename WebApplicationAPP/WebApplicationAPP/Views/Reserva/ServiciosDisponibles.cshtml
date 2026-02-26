@@ -1,0 +1,56 @@
+﻿@model IEnumerable<WebApplicationAPP.Models.Servicio>
+
+@{
+    ViewData["Title"] = "Servicios Disponibles";
+}
+
+<h2>Servicios Disponibles</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Área</th>
+            <th>Encargado</th>
+            <th>Monto</th>
+            <th>Sucursal</th>
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Nombre</td>
+                <td>
+                    @{
+                        string area = "";
+                        if (item.AreaServicio == 1)
+                        {
+                            area = "Servicios Financieros";
+                        }
+                        else if (item.AreaServicio == 2)
+                        {
+                            area = "Servicios de Salud";
+                        }
+                        else if (item.AreaServicio == 3)
+                        {
+                            area = "Servicios de Capacitación";
+                        }
+                    }
+                    @area
+                </td>
+                <td>@item.Encargado</td>
+                <td>@item.Monto</td>
+                <td>@item.Sucursal</td>
+                <td>
+                    <a asp-action="Create"
+                       asp-route-idServicio="@item.Id"
+                       class="btn btn-success btn-sm">
+                        Reservar
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

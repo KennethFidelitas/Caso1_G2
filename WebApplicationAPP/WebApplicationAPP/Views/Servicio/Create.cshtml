@@ -1,0 +1,63 @@
+﻿@model WebApplicationAPP.Models.Servicio
+
+@{
+    ViewData["Title"] = "Registrar Servicio";
+}
+
+<h2>Registrar Servicio</h2>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.Error
+    </div>
+}
+
+<form asp-action="Create" method="post">
+
+    <div class="form-group">
+        <label>Nombre</label>
+        <input asp-for="Nombre" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Descripción</label>
+        <input asp-for="Descripcion" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Monto</label>
+        <input asp-for="Monto" class="form-control" type="number" step="0.01" />
+    </div>
+
+    <div class="form-group">
+        <label>IVA</label>
+        <input asp-for="IVA" class="form-control" type="number" step="0.01" />
+    </div>
+
+    <div class="form-group">
+        <label>Área de Servicio</label>
+        <select asp-for="AreaServicio" class="form-control">
+            <option value="">Seleccione...</option>
+            <option value="1">Servicios Financieros</option>
+            <option value="2">Servicios de Salud</option>
+            <option value="3">Servicios de Capacitación</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Encargado</label>
+        <input asp-for="Encargado" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Sucursal</label>
+        <input asp-for="Sucursal" class="form-control" />
+    </div>
+
+    <br />
+
+    <button type="submit" class="btn btn-success">Guardar</button>
+    <a asp-action="Index" class="btn btn-secondary">Volver</a>
+
+</form>

@@ -1,0 +1,58 @@
+﻿@model WebApplicationAPP.Models.Reserva
+
+@{
+    ViewData["Title"] = "Detalle de Reserva";
+}
+
+<h2>Detalle de Reserva</h2>
+
+<div class="card">
+    <div class="card-body">
+
+        <h4>Datos del Asociado</h4>
+        <p><strong>Nombre:</strong> @Model.NombreDelAsociado</p>
+        <p><strong>Identificación:</strong> @Model.Identificacion</p>
+        <p><strong>Teléfono:</strong> @Model.Telefono</p>
+        <p><strong>Correo:</strong> @Model.Correo</p>
+        <p><strong>Fecha de Nacimiento:</strong> @Model.FechaNacimiento.ToShortDateString()</p>
+        <p><strong>Dirección:</strong> @Model.Direccion</p>
+
+        <hr />
+
+        <h4>Datos del Servicio</h4>
+        <p><strong>Nombre del Servicio:</strong> @Model.Servicio?.Nombre</p>
+        <p>
+            <strong>Área del Servicio:</strong>
+            @{
+                string area = "";
+                if (Model.Servicio?.AreaServicio == 1)
+                {
+                    area = "Servicios Financieros";
+                }
+                else if (Model.Servicio?.AreaServicio == 2)
+                {
+                    area = "Servicios de Salud";
+                }
+                else if (Model.Servicio?.AreaServicio == 3)
+                {
+                    area = "Servicios de Capacitación";
+                }
+            }
+            @area
+        </p>
+        <p><strong>Encargado:</strong> @Model.Servicio?.Encargado</p>
+
+        <hr />
+
+        <h4>Información de la Reserva</h4>
+        <p><strong>Monto Total:</strong> @Model.MontoTotal</p>
+        <p><strong>Fecha del Servicio:</strong> @Model.FechaDelServicio.ToShortDateString()</p>
+        <p><strong>Fecha de Registro:</strong> @Model.FechaDeRegistro.ToShortDateString()</p>
+
+    </div>
+</div>
+
+<br />
+
+<a asp-action="ServiciosDisponibles" class="btn btn-primary">Nueva Reserva</a>
+<a asp-action="Buscar" class="btn btn-secondary">Buscar Reserva</a>

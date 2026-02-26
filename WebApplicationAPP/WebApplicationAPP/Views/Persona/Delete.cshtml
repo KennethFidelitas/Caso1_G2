@@ -1,0 +1,68 @@
+﻿@model WebApplicationAPP.Models.Persona
+
+@{
+    ViewBag.Title = "Eliminar Persona";
+}
+
+<h2>Eliminar Persona</h2>
+
+
+<form asp-action="Delete" method="post">
+    <input type="text" asp-for="Id" type="text"
+           class="form-control"
+           aria-describedby="helpId"
+           placeholder="Ingrese su nombre"
+           disabled />
+
+    <div class="mb-3">
+        <label for="" class="form-label">Nombre</label>
+        <input type="text"
+               class="form-control"
+               aria-describedby="helpId"
+               placeholder="Ingrese su nombre"
+               asp-for="Nombre" disabled/>
+        <small id="helpId" class="form-text text-muted">Help Nombre</small>
+    </div>
+
+
+    <div class="mb-3">
+        <label for="" class="form-label">Apellido</label>
+        <input type="text"
+               class="form-control"
+               aria-describedby="helpId"
+               placeholder="Ingrese su nombre"
+               asp-for="Apellido" disabled/>
+        <small id="helpId" class="form-text text-muted">Help Apellido</small>
+    </div>
+
+
+
+    <div class="mb-3">
+        <label for="" class="form-label">Estado</label>
+
+        <div class="form-group">
+            <input aria-describedby="helpId"
+                   placeholder="Ingrese su nombre"
+                   asp-for="Estado" disabled />
+        </div>
+
+        <small id="helpId" class="form-text text-muted">Help Estado</small>
+    </div>
+
+
+    <div class="mb-3">
+
+
+        <button type="submit"
+                class="btn btn-danger">
+            Eliminar
+        </button>
+
+        <a asp-action="Index"
+           class="btn btn-light"
+           role="button">Cancelar</a>
+
+
+    </div>
+
+</form>

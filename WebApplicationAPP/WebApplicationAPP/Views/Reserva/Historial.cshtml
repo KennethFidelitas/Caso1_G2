@@ -1,0 +1,47 @@
+﻿@model IEnumerable<WebApplicationAPP.Models.Reserva>
+
+@{
+    ViewData["Title"] = "Historial de Reservas";
+}
+
+<h2>Historial de Reservas</h2>
+
+<form asp-action="Historial" method="get" class="mb-3">
+    <div class="form-group">
+        <label>Filtrar por IdServicio</label>
+        <input type="number" name="idServicio" class="form-control" />
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Filtrar</button>
+    <a asp-action="Historial" class="btn btn-secondary">Ver Todos</a>
+</form>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Nombre del Asociado</th>
+            <th>Teléfono</th>
+            <th>Correo</th>
+            <th>Identificación</th>
+            <th>Monto Total</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Fecha del Servicio</th>
+            <th>Fecha de Registro</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.NombreDelAsociado</td>
+                <td>@item.Telefono</td>
+                <td>@item.Correo</td>
+                <td>@item.Identificacion</td>
+                <td>@item.MontoTotal</td>
+                <td>@item.FechaNacimiento.ToShortDateString()</td>
+                <td>@item.FechaDelServicio.ToShortDateString()</td>
+                <td>@item.FechaDeRegistro.ToShortDateString()</td>
+            </tr>
+        }
+    </tbody>
+</table>

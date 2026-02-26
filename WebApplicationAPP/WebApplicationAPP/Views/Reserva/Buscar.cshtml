@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Buscar Reserva";
+}
+
+<h2>Buscar Reserva</h2>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.Error
+    </div>
+}
+
+<form asp-action="Buscar" method="post">
+
+    <div class="form-group">
+        <label>Número de Reserva (IdReserva)</label>
+        <input type="number" name="id" class="form-control" required />
+    </div>
+
+    <br />
+
+    <button type="submit" class="btn btn-primary">Buscar</button>
+    <a asp-action="ServiciosDisponibles" class="btn btn-secondary">Volver</a>
+
+</form>
